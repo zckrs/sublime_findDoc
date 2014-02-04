@@ -1,0 +1,3 @@
+[
+    { "keys": ["ctrl+alt+d"], "command": "find_doc_selection", "args" : {"url" : "http://devdocs.io/#q=%s"} }
+]
