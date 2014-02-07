@@ -1,21 +1,29 @@
 FindDoc
 =======
-Find documentation in Sublime Text by Mehdy Dara (mdara@eleven-labs.com)
+Find documentation in Sublime Text by Mehdy Dara (mdara@eleven-labs.com).
 
-Customization
-=============
-Include this in the user key binding to overwrite default behaviour
+How to configure
+================
+The default shortcut to call the plugin is : (ctrl + alt + d).
+The default used url is : (http://devdocs.io/#q=%s).
 
-    { "keys": ["ctrl+alt+d"], "command": "find_doc_selection" }
+But you can set multiple shortcuts and urls by your key bindings.
 
+Examples :
+	{ "keys": ["ctrl+alt+d"], "command": "find_doc_selection", "args" : {"url" : "http://devdocs.io/#q=%s"} }
+	{ "keys": ["ctrl+alt+g"], "command": "find_doc_selection", "args" : {"url" : "http://google.fr/search?q=%s"} }
+	{ "keys": ["ctrl+alt+k"], "command": "find_doc_selection", "args" : {"url" : "http://php.net/%s"} }
+Others examples : you can open cheat sheet or what do you want
+    { "keys": ["ctrl+alt+c"], "command": "find_doc_selection", "args" : {"url" : "http://www.cheatography.com/fredv/cheat-sheets/gmail-cheat-sheet/"} }
+    { "keys": ["ctrl+alt+n"], "command": "find_doc_selection", "args" : {"url" : "http://www.nyan.cat/"} }
 
 How to use
-=====
+==========
 Highlight the function to search, use the shortcut and valid the url in prompt.
-If you don't highlight text, the plugin selects the current word at cursor by camelCase
+If you don't highlight text, the plugin selects the current word at cursor by camelCase.
 
 Support
 =======
 If you have some problems or improvements, [contact me](https://github.com/zckrs/sublime_findDoc/issues) via GitHub.
 
-Mehdy Dara
+Regards, Mehdy Dara

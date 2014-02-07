@@ -1,30 +1,33 @@
 # Written by Mehdy Dara (mdara@eleven-labs.com)
 
-import sublime, sublime_plugin, webbrowser
+import sublime, sublime_plugin, webbrowser, urllib
 
 class FindDocSelectionCommand(sublime_plugin.TextCommand):
     def run(self, edit, url):
-        text = ""
+        arrayUrl = []
 
+        # Get the text for each selections and cursors.
         for region in self.view.sel():
-
             if region.empty():
                 word = self.view.word(region)
-                text += self.view.substr(word)
+                text = self.view.substr(word)
             else:
-                text += self.view.substr(region)
+                text = self.view.substr(region)
 
-        try:
-            url = url % text
-        except TypeError:
-            url = url
+            # Encode the text for url
+            try:
+                text = urllib.parse.quote(text)
+            except AttributeError:
+                print("FindDoc AttributeError : 'urllibl' object has no attribute 'parse'")
+                text = text.replace(' ', '%20')
+
+            # Concatenate url and text
+            try:
+                arrayUrl.append(url % text)
+            except TypeError:
+                arrayUrl.append(url % '')
 
         if sublime.active_window():
-            sublime.active_window().run_command("prompt_find_doc", {"url": url} )
-
-class PromptFindDocCommand(sublime_plugin.WindowCommand):
-    def run(self, url):
-        self.window.show_input_panel("Find doc on : ", url, self.on_done, None, None)
-
-    def on_done(self, url):
-        webbrowser.open_new_tab(url)
+            # Open new tab for each highlighted text
+            for aUrl in arrayUrl:
+                webbrowser.open_new_tab(aUrl)
