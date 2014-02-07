@@ -15,7 +15,11 @@ class FindDocSelectionCommand(sublime_plugin.TextCommand):
                 text = self.view.substr(region)
 
             # Encode the text for url
-            text = urllib.parse.quote(text)
+            try:
+                text = urllib.parse.quote(text)
+            except AttributeError:
+                print("FindDoc AttributeError : 'urllibl' object has no attribute 'parse'")
+                text = text.replace(' ', '%20')
 
             # Concatenate url and text
             try:
