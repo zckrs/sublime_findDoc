@@ -8,13 +8,14 @@ Or you can download the zip archive and unzip in your packages directory (by Pre
 
 ### How to configure
 The default shortcut to call the plugin is : (`ctrl + shift + d`).
+The default used url is : (`http://devdocs.io/#q=%s`).
 
 But you can set multiple shortcuts and urls by your key bindings.
 
 ### How to use
-Highlight the function to search, use the shortcut and valid the url in prompt.
+Highlight the function to search and use the shortcut to open a new tab.
 
-If you don't highlight text, the plugin selects the current word at cursor by camelCase
+If you don't highlight text, the plugin selects the current word at cursor by camelCase.
 
 ### How to contribute
 If you have some problems or improvements, [contact me](https://github.com/zckrs/sublime_findDoc/issues) via GitHub.
