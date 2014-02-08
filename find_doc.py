@@ -1,6 +1,6 @@
 # Written by Mehdy Dara (mdara@eleven-labs.com)
 
-import sublime, sublime_plugin, webbrowser, urllib
+import sublime, sublime_plugin, webbrowser, urllib.parse
 
 class FindDocSelectionCommand(sublime_plugin.TextCommand):
     def run(self, edit, url):
@@ -15,11 +15,7 @@ class FindDocSelectionCommand(sublime_plugin.TextCommand):
                 text = self.view.substr(region)
 
             # Encode the text for url
-            try:
-                text = urllib.parse.quote(text)
-            except AttributeError:
-                print("FindDoc AttributeError : 'urllibl' object has no attribute 'parse'")
-                text = text.replace(' ', '%20')
+            text = urllib.parse.quote(text)
 
             # Concatenate url and text
             try:
