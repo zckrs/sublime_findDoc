@@ -1,6 +1,6 @@
 # Written by Mehdy Dara (mdara@eleven-labs.com)
 
-import sublime, sublime_plugin, webbrowser, urllib.parse
+import sublime, sublime_plugin, webbrowser
 
 class FindDocSelectionCommand(sublime_plugin.TextCommand):
     def run(self, edit, url):
@@ -15,7 +15,12 @@ class FindDocSelectionCommand(sublime_plugin.TextCommand):
                 text = self.view.substr(region)
 
             # Encode the text for url
-            text = urllib.parse.quote(text)
+            try:
+                import urllib.parse
+                text = urllib.parse.quote(text)
+            except ImportError:
+                import urllib
+                text = urllib.quote(text)
 
             # Concatenate url and text
             try:
