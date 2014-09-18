@@ -24,6 +24,50 @@ Others examples : you can open cheat sheet or what do you want
 { "keys": ["ctrl+alt+c"], "command": "find_doc_selection", "args" : {"url" : "http://www.cheatography.com/fredv/cheat-sheets/gmail-cheat-sheet/"} }
 { "keys": ["ctrl+alt+n"], "command": "find_doc_selection", "args" : {"url" : "http://www.nyan.cat/"} }
 ```
+
+You can also use the same shorcut but do differents action based on the current context:
+
+* this is the default key binding
+```json
+{
+    "keys": ["ctrl+alt+d"],
+    "command": "find_doc_selection",
+    "args" : {"url" : "http://devdocs.io/#q=%s"}
+}
+```
+
+* Context-based key binding for Python code...
+```json
+{
+    "keys": ["ctrl+alt+d"],
+    "command": "find_doc_selection",
+    "args" : {"url" : "http://devdocs.io/#q=python%%20%s"},
+    "context": [
+        {
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.python"
+        }
+    ]
+}
+```
+* Another one for JavaScript code...
+```json
+{
+    "keys": ["ctrl+alt+d"],
+    "command": "find_doc_selection",
+    "args" : {"url" : "https://developer.mozilla.org/fr/search?q=%s"},
+    "context": [
+        {
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.js"
+        }
+    ]
+}
+```
+Note: you need to put context-specific key binding after the default
+
 ### How to use
 Highlight the function(s)/method(s)/text(s) to search and use the shortcut to open a new tab(s).
 
